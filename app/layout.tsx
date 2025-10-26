@@ -1,15 +1,43 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { Open_Sans, DM_Serif_Display, Archivo_Black } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const openSans = Open_Sans({
+  variable: "--font-open",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmSerifDisplay = DM_Serif_Display({
+  variable: "--font-dm-serif",
   subsets: ["latin"],
+  weight: "400",
+});
+
+const archivoBlack = Archivo_Black({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const dreamAvenue = localFont({
+  variable: "--font-dream",
+  src: "../public/fonts/DreamAvenue.ttf",
+});
+
+const palatinoArabic = localFont({
+  variable: "--font-palatino",
+  src: "../public/fonts/PalatinoArabic-Regular.ttf",
+});
+
+const myriadArabic = localFont({
+  variable: "--font-myriad",
+  src: "../public/fonts/MyriadArabic-Regular.otf",
+});
+
+const montserratArabic = localFont({
+  variable: "--font-montserrat",
+  src: "../public/fonts/Montserrat-Arabic-Regular.ttf",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +53,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+          ${openSans.variable}
+          ${dmSerifDisplay.variable}
+          ${archivoBlack.variable}
+          ${dreamAvenue.variable}
+          ${palatinoArabic.variable}
+          ${myriadArabic.variable}
+          ${montserratArabic.variable}
+          antialiased
+          `}
       >
         {children}
       </body>
