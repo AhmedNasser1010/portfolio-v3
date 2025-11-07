@@ -7,6 +7,7 @@ export default function Home() {
       <p className="font-archivo">Hello there</p>
       <p className="font-dream">Hello there</p>
       <p className="font-palatino">بسم الله الرحمن الرحيم</p>
+      <p className="font-myriad">بسم الله الرحمن الرحيم</p>
       <p className="font-montserrat">بسم الله الرحمن الرحيم</p>
     </div>
   );

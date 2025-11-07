@@ -12,6 +12,7 @@ module.exports = {
         archivo: ["var(--font-archivo)"],
         dream: ["var(--font-dream)"],
         palatino: ["var(--font-palatino)"],
+        myriad: ["var(--font-myriad)"],
         montserrat: ["var(--font-montserrat)"],
       },
     },
