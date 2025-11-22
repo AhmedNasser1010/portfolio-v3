@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         open: ["var(--font-open)"],
-        dmSerif: ["var(--font-dm-serif)"],
+        dmSerif: ["var(--font-dmSerif)"],
         archivo: ["var(--font-archivo)"],
         dream: ["var(--font-dream)"],
         palatino: ["var(--font-palatino)"],
