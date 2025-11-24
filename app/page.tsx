@@ -1,13 +1,13 @@
-import { Container } from "@/components/Container";
-import { Btn } from "@/components/Btn";
+import { Container, Button } from "@/components/ui";
 import { LuHash } from "react-icons/lu";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+const Home = () => {
   return (
-    <Container className="bg-white pt-0 h-screen flex flex-col justify-between">
+    <Container className="bg-white pt-0 h-screen flex flex-col justify-between px-0">
       <header>
-        <p className="w-full text-[18px] mt-2 mb-4 font-palatino text-center">
+        <p className="w-full text-lg mt-2 mb-[5px] font-palatino text-center">
           بِـسْـمِ الـلَّـهِ الـرَّحْـمَـنِ الـرَّحِـيـمِ
         </p>
 
@@ -24,26 +24,26 @@ export default function Home() {
         </nav>
       </header>
 
-      <p className="text-center">👋, my name is Ahmed and Im a freelance</p>
+      <h3 className="text-center">👋, my name is Ahmed and Im a freelance</h3>
 
-      <main className="relative h-[70%]">
+      <main className="relative min-h-[70%]">
         <div className="absolute bottom-[422px] left-1/2 -translate-x-1/2 w-max">
           <div>
             <h2 className="text-[42px] font-archivo text-center mb-4">
               Webdeveloper
             </h2>
             <div className="w-fit mx-auto">
-              <span className="text-[38px] font-dream text-center block tracking-widest">
+              <h2 className="text-[38px]  font-dream text-center block tracking-widest">
                 & Problem Solving
-              </span>
-              <span className="text-[12px] mt-[-6px] block">
+              </h2>
+              <span className="text-[12px] text-xs mt-[-6px] block">
                 based in Giza, Egypt
               </span>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[410px] h-[564px] min-w-[410px] min-h-[564px] object-cover">
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[410px] h-[564px] min-w-[410px] min-h-[564px]">
           <Image
             src="/images/me.png"
             width={410}
@@ -53,19 +53,19 @@ export default function Home() {
           />
         </div>
 
-        <div className="h-[349px] w-full flex flex-col absolute bottom-0">
-          <span className="h-[201px] bg-gradient-to-t from-[#e9e9e9] to-white/0"></span>
-          <span className="h-[148px] bg-[#e9e9e9]"></span>
-        </div>
+        <div className="h-[349px] w-full absolute bottom-0 translate-y-4 bg-gradient-to-t from-gray-200 via-gray-200 to-transparent"></div>
 
         <div className="flex gap-5 absolute bottom-[103px] left-1/2 -translate-x-1/2 w-max">
-          <Btn style="normal">Hire me</Btn>
-          {/* Padding is not applied!! */}
-          <Btn className="px-11" style="outline">
-            My works
-          </Btn>
+          <Button variant="normal" asChild>
+            <Link href="#contact">Hire me</Link>
+          </Button>
+          <Button className="px-11" variant="outline" asChild>
+            <Link href="#projects">My works</Link>
+          </Button>
         </div>
       </main>
     </Container>
   );
-}
+};
+
+export default Home;
