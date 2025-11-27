@@ -1,11 +1,116 @@
-import { Container, Button } from "@/components/ui";
+"use client";
+import { Container, Button, BurgerMenu, ListItem } from "@/components/ui";
 import { LuHash } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 const Home = () => {
+  const [open, setOpen] = useState(false);
+
+  const asideRef = useRef<HTMLDivElement | null>(null);
+  const menuBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  const handleMenuToggle = () => {
+    setOpen(!open);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (!open) return;
+
+      const aside = asideRef.current;
+      const menuBtn = menuBtnRef.current;
+
+      if (aside && aside.contains(e.target as Node)) return;
+
+      if (menuBtn && menuBtn.contains(e.target as Node)) return;
+
+      setOpen(false);
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
   return (
     <Container className="bg-white pt-0 h-screen flex flex-col justify-between px-0">
+      <motion.aside
+        ref={asideRef}
+        className="bg-[#202020] px-12 pb-9 pt-16 fixed top-0 right-0 translate-x-full w-[320px] h-full p-6 text-white gap-10 lg:flex z-30 flex flex-col justify-between"
+        variants={{
+          open: {
+            x: 0,
+            borderRadius: 0,
+            transition: { duration: 0.6, ease: "circInOut" },
+          },
+          closed: {
+            x: "100%",
+            borderTopLeftRadius: "50%",
+            borderBottomLeftRadius: "50%",
+            transition: { duration: 0.6, ease: "circInOut" },
+          },
+        }}
+        initial="closed"
+        animate={open ? "open" : "closed"}
+      >
+        <div className="h-[60%] flex flex-col justify-between">
+          <div>
+            <span className="block font-bold text-[#b5b5b5] pb-6">Menu</span>
+            <ul className="flex flex-col gap-3">
+              <ListItem
+                title="Home"
+                link="#home"
+                onClick={() => setOpen(false)}
+              />
+              <ListItem
+                title="About"
+                link="#about"
+                onClick={() => setOpen(false)}
+              />
+              <ListItem
+                title="Tech Stack"
+                link="#tech-stack"
+                onClick={() => setOpen(false)}
+              />
+              <ListItem
+                title="Project"
+                link="#project"
+                onClick={() => setOpen(false)}
+              />
+            </ul>
+          </div>
+
+          <div>
+            <span className="block font-bold text-[#b5b5b5] pb-6">Social</span>
+            <ul>
+              <li className="mt-1 text-lg">
+                <a href="#">GitHub</a>
+              </li>
+              <li className="mt-1 text-lg">
+                <a href="#">LinkedIn</a>
+              </li>
+              <li className="mt-1 text-lg">
+                <a href="#">WhatsApp</a>
+              </li>
+              <li className="mt-1 text-lg">
+                <a href="#">Old version</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <span className="block font-bold text-[#b5b5b5] pb-6">
+            Get in touch
+          </span>
+          <a href="mailto:ahmedn.coder@gmail.com" className="block">
+            ahmedn.coder@gmail.com
+          </a>
+        </div>
+      </motion.aside>
+
       <header>
         <p className="w-full text-lg mt-2 mb-[5px] font-palatino text-center">
           بِـسْـمِ الـلَّـهِ الـرَّحْـمَـنِ الـرَّحِـيـمِ
@@ -17,10 +122,11 @@ const Home = () => {
             <h1>Ahmed</h1>
           </div>
 
-          <div className="flex flex-col gap-[7px] justify-center">
-            <span className="w-10 h-[3px] bg-neutral-900 block rounded-md"></span>
-            <span className="w-10 h-[3px] bg-neutral-900 block rounded-md"></span>
-          </div>
+          <BurgerMenu
+            open={open}
+            handleMnuToggle={handleMenuToggle}
+            ref={menuBtnRef}
+          />
         </nav>
       </header>
 

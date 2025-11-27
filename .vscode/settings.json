@@ -20,7 +20,6 @@
     "postcss.config.js",
     "package-lock.json",
     "next.config.ts",
-    "package.json",
     "node_modules",
     ".next",
     ".vscode",
