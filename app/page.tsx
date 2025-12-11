@@ -15,7 +15,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Header
         open={open}
         handleMenuToggle={handleMenuToggle}

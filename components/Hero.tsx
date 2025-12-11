@@ -4,7 +4,7 @@ import { Button } from "@/components/ui";
 
 const Hero = () => {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white" id="home">
       <div
         className="bg-white pt-0 h-screen flex flex-col justify-between px-0"
         id="home"

@@ -32,7 +32,7 @@ const Menu = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
   return (
     <motion.aside
       ref={asideRef}
-      className="bg-[#202020] px-12 pb-9 pt-16 fixed top-0 right-0 translate-x-full w-[320px] h-full p-6 text-white gap-10 lg:flex z-50 flex flex-col justify-between"
+      className="bg-[#202020] px-12 pb-9 pt-10 fixed top-0 right-0 translate-x-full w-[320px] h-full p-6 text-white gap-10 lg:flex z-50 flex flex-col justify-between"
       variants={{
         open: {
           x: 0,
