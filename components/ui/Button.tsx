@@ -2,11 +2,13 @@ import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
 
-const buttonVariants = cva("block ring-2 rounded-sm", {
+const buttonVariants = cva("block ring-2 rounded-sm text-center", {
   variants: {
     variant: {
-      normal: "bg-[#202020] text-white ring-black",
-      outline: "bg-transparent text-black ring-[#202020]",
+      normalLight: "bg-[#202020] text-white ring-black",
+      normalDark: "bg-white text-[#202020] ring-white",
+      outlineLight: "bg-transparent text-black ring-[#202020]",
+      outlineDark: "bg-transparent text-white ring-white",
     },
     size: {
       normal: "px-6 py-1 text-base",
@@ -15,7 +17,7 @@ const buttonVariants = cva("block ring-2 rounded-sm", {
     },
   },
   defaultVariants: {
-    variant: "normal",
+    variant: "normalLight",
     size: "normal",
   },
 });
