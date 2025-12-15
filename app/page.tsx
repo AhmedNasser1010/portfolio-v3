@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { Menu, Header, Hero, About } from "@/components";
+import { Menu, Header, Hero, About, TechStack } from "@/components";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -32,7 +32,9 @@ const Home = () => {
 
       <About />
 
-      <div className="h-[500px]"></div>
+      <TechStack />
+
+      <div className="h-[2000px]"></div>
     </div>
   );
 };
