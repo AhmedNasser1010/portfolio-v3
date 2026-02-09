@@ -2,9 +2,22 @@ import { Badge } from "@/components/ui";
 import { ProjectProps } from "./Projects";
 import { MdArrowOutward } from "react-icons/md";
 
-const Project = ({ project }: { project: ProjectProps }) => {
+const heights = [310, 400, 454];
+
+const Project = ({
+  project,
+  index,
+}: {
+  project: ProjectProps;
+  index: number;
+}) => {
+  const height = heights[index % heights.length];
+
   return (
-    <div className="relative overflow-hidden h-[400px] rounded-xl p-3 text-white flex flex-col justify-end cursor-pointer">
+    <div
+      className="relative overflow-hidden rounded-xl p-3 text-white flex flex-col justify-end cursor-pointer"
+      style={{ height }}
+    >
       <video
         autoPlay
         loop

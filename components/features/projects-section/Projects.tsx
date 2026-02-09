@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Project from "./Project";
-import { Container, Title } from "@/components/ui";
+import { Container } from "@/components/ui";
 
 export type ProjectProps = {
   title: string;
@@ -123,12 +123,14 @@ const Projects = () => {
   return (
     <section className="w-full bg-[#202020]" id="projects">
       <Container className="text-white py-28">
-        <main>
-          {/* <Title>Projects</Title> */}
-
+        <main className="columns-1 gap-9 lg:columns-2">
           {ProjectsData.map((project, index) => (
-            <Link key={index} className="block mb-9 last:mb-0" href={`/projects/${project.title.toLowerCase().replace(/\s+/g, "-")}`}>
-              <Project project={project} />
+            <Link
+              key={index}
+              className="mb-9 inline-block w-full break-inside-avoid"
+              href={`/projects/${project.title.toLowerCase().replace(/\s+/g, "-")}`}
+            >
+              <Project project={project} index={index} />
             </Link>
           ))}
         </main>
