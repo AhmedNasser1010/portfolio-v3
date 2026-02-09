@@ -5,16 +5,16 @@
     "**/.hg": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
+    "package.json": false,
     "postcss.config.js": true,
     "package-lock.json": true,
     "next.config.ts": true,
-    "package.json": true,
     "node_modules": true,
     ".next": true,
     ".vscode": true,
     "global.d.ts": true,
-    "next-env.d.ts": true,
-    ".gitignore": true
+    ".gitignore": true,
+    "next-env.d.ts": true
   },
   "hide-files.files": [
     "postcss.config.js",
@@ -24,7 +24,6 @@
     ".next",
     ".vscode",
     "global.d.ts",
-    "next-env.d.ts",
     ".gitignore"
   ]
 }

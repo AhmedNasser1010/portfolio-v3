@@ -1,5 +1,5 @@
 import { LuHash } from "react-icons/lu";
-import { BurgerMenu, Container } from "./ui";
+import { BurgerMenu, Container } from "@/components/ui";
 
 interface HeaderProps {
   open: boolean;

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { BurgerMenu, ListItem } from "./ui";
+import { BurgerMenu, ListItem } from "@/components/ui";
 import { useEffect, useRef } from "react";
 
 interface MenuProps {
@@ -8,7 +8,7 @@ interface MenuProps {
   menuBtnRef: React.RefObject<HTMLButtonElement | null>;
 }
 
-const Menu = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
+const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
   const asideRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -114,4 +114,4 @@ const Menu = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
   );
 };
 
-export default Menu;
+export default Sidebar;

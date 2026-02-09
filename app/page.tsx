@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
-import { Menu, Header, Hero, About, TechStack } from "@/components";
+import { Sidebar, Header, Hero, About, TechStack, Projects } from "@/components";
+import WindowSize from "@/components/WindowSize";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -16,13 +17,15 @@ const Home = () => {
 
   return (
     <div className="overflow-x-hidden">
+      <WindowSize />
+
       <Header
         open={open}
         handleMenuToggle={handleMenuToggle}
         menuBtnRef={menuBtnRef}
       />
 
-      <Menu
+      <Sidebar
         open={open}
         handleMenuToggle={handleMenuToggle}
         menuBtnRef={menuBtnRef}
@@ -33,6 +36,8 @@ const Home = () => {
       <About />
 
       <TechStack />
+
+      <Projects />
 
       <div className="h-[2000px]"></div>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, InfiniteCarousel } from "./ui";
+import { Container, InfiniteCarousel } from "@/components/ui";
 
 const iconsPath = "/icons/tech-stack/";
 
@@ -34,8 +34,6 @@ const TechStack = () => {
     <section className="w-full bg-white" id="tech-stack">
       <Container>
         <main className="py-12">
-          {/* <Title className="pb-4 px-9">Tech Stack</Title> */}
-
           <div className="pb-12">
             <h3 className="text-center pb-5 font-archivo font-bold text-xl">
               FRONTEND
@@ -58,7 +56,7 @@ const TechStack = () => {
                         {tech.name}
                       </span>
                     </div>
-                  )
+                  ),
                 )}
               </InfiniteCarousel>
             </div>
