@@ -14,6 +14,7 @@ module.exports = {
         palatino: ["var(--font-palatino)"],
         myriad: ["var(--font-myriad)"],
         montserrat: ["var(--font-montserrat)"],
+        futura: ["var(--font-futura)"],
       },
     },
   },

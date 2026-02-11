@@ -40,6 +40,27 @@ const montserratArabic = localFont({
   src: "../public/fonts/Montserrat-Arabic-Regular.ttf",
 });
 
+const futura = localFont({
+  variable: "--font-futura",
+  src: [
+    {
+      path: "../public/fonts/futura-pt/FuturaCyrillicMedium.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura-pt/FuturaCyrillicDemi.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura-pt/FuturaCyrillicBold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
+
 export const metadata: Metadata = {
   title: "Ahmed Nasser | Frontend Web Developer",
   description:
@@ -62,6 +83,7 @@ export default function RootLayout({
           ${palatinoArabic.variable}
           ${myriadArabic.variable}
           ${montserratArabic.variable}
+          ${futura.variable}
           antialiased
           `}
       >

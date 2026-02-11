@@ -35,7 +35,7 @@ const Project = ({
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-            <p className="mb-2 text-sm w-3/4">{project.description}</p>
+            <p className="mb-2 text-sm w-3/4">{project.summary}</p>
           </div>
 
           <MdArrowOutward className="w-8 mt-4" />
