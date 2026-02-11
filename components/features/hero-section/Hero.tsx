@@ -34,7 +34,7 @@ const Hero = () => {
 
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 min-w-[410px] min-h-[564px]">
             <Image
-              src="/images/me.png"
+              src="/images/me.webp"
               width={410}
               height={564}
               alt="Picture of the author"

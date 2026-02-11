@@ -137,7 +137,7 @@ const Projects = () => {
   return (
     <section className="w-full bg-[#202020]" id="projects">
       <Container className="text-white py-28">
-        <main className="columns-1 gap-9 lg:columns-2">
+        <div className="columns-1 gap-9 lg:columns-2">
           {ProjectsData.map((project, index) => (
             <Link
               key={index}
@@ -147,7 +147,7 @@ const Projects = () => {
               <Project project={project} index={index} />
             </Link>
           ))}
-        </main>
+        </div>
       </Container>
     </section>
   );

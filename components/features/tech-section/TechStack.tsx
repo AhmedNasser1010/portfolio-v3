@@ -33,7 +33,7 @@ const TechStack = () => {
   return (
     <section className="w-full bg-white" id="tech-stack">
       <Container>
-        <main className="py-12">
+        <div className="py-12">
           <div className="pb-12">
             <h3 className="text-center pb-5 font-archivo font-bold text-xl">
               FRONTEND
@@ -91,7 +91,7 @@ const TechStack = () => {
               </InfiniteCarousel>
             </div>
           </div>
-        </main>
+        </div>
       </Container>
     </section>
   );

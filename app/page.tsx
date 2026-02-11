@@ -1,7 +1,16 @@
 "use client";
 import { useRef, useState } from "react";
-import { Sidebar, Header, Hero, About, TechStack, Projects } from "@/components";
+import {
+  Sidebar,
+  Header,
+  Hero,
+  About,
+  TechStack,
+  Projects,
+  Contact,
+} from "@/components";
 import WindowSize from "@/components/WindowSize";
+import { Container } from "@/components/ui";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -16,7 +25,7 @@ const Home = () => {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <main className="overflow-x-hidden">
       <WindowSize />
 
       <Header
@@ -39,8 +48,21 @@ const Home = () => {
 
       <Projects />
 
-      <div className="h-[2000px]"></div>
-    </div>
+      <Contact />
+
+      <footer className="w-full border-t border-black/10 bg-[#202020] text-white">
+        <Container className="py-3 text-center">
+          <div className="w-full space-y-2 text-xs">
+            <p className="font-futura">
+              Building clean, scalable and user-focused web experiences.
+            </p>
+            <p className="text-[9px]">
+              &copy; 2026 Ahmed Nasser. All rights reserved.
+            </p>
+          </div>
+        </Container>
+      </footer>
+    </main>
   );
 };
 

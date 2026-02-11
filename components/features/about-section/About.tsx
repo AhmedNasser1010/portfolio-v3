@@ -6,10 +6,10 @@ const About = () => {
   return (
     <section className="w-full bg-[#202020]" id="about">
       <Container className="text-white z-50">
-        <main className="flex flex-col items-center justify-center py-28 md:flex-row md:align-center">
+        <div className="flex flex-col items-center justify-center py-28 md:flex-row md:align-center">
           <div className="min-w-[271px] min-h-[272px] pb-16 md:pb-0 overflow-hidden md:pr-12 md:scale-[1.06]">
             <Image
-              src="/images/office.jpg"
+              src="/images/office.webp"
               width={271}
               height={272}
               alt="Picture of"
@@ -39,7 +39,7 @@ const About = () => {
               </Button>
             </div>
           </div>
-        </main>
+        </div>
       </Container>
     </section>
   );
