@@ -22,39 +22,39 @@ const archivoBlack = Archivo_Black({
 
 const dreamAvenue = localFont({
   variable: "--font-dream",
-  src: "../public/fonts/DreamAvenue.ttf",
+  src: "../../public/fonts/DreamAvenue.ttf",
 });
 
 const palatinoArabic = localFont({
   variable: "--font-palatino",
-  src: "../public/fonts/PalatinoArabic-Regular.ttf",
+  src: "../../public/fonts/PalatinoArabic-Regular.ttf",
 });
 
 const myriadArabic = localFont({
   variable: "--font-myriad",
-  src: "../public/fonts/MyriadArabic-Regular.otf",
+  src: "../../public/fonts/MyriadArabic-Regular.otf",
 });
 
 const montserratArabic = localFont({
   variable: "--font-montserrat",
-  src: "../public/fonts/Montserrat-Arabic-Regular.ttf",
+  src: "../../public/fonts/Montserrat-Arabic-Regular.ttf",
 });
 
 const futura = localFont({
   variable: "--font-futura",
   src: [
     {
-      path: "../public/fonts/futura-pt/FuturaCyrillicMedium.ttf",
+      path: "../../public/fonts/futura-pt/FuturaCyrillicMedium.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/futura-pt/FuturaCyrillicDemi.ttf",
+      path: "../../public/fonts/futura-pt/FuturaCyrillicDemi.ttf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../public/fonts/futura-pt/FuturaCyrillicBold.ttf",
+      path: "../../public/fonts/futura-pt/FuturaCyrillicBold.ttf",
       weight: "700",
       style: "normal",
     },

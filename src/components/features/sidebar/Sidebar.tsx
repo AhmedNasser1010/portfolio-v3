@@ -50,8 +50,8 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
       animate={open ? "open" : "closed"}
     >
       <div className="h-[60%] flex flex-col justify-between">
-        <div>
-          <div className="pb-6 flex items-center justify-between">
+        <div className="pb-8">
+          <div className="pb-4 flex items-center justify-between">
             <span className="font-bold text-[#b5b5b5]">Menu</span>
             <BurgerMenu
               open={open}
@@ -77,14 +77,19 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
             />
             <ListItem
               title="Project"
-              link="#project"
+              link="#projects"
+              onClick={() => handleMenuToggle(false)}
+            />
+            <ListItem
+              title="Contact"
+              link="#contact"
               onClick={() => handleMenuToggle(false)}
             />
           </ul>
         </div>
 
         <div>
-          <span className="block font-bold text-[#b5b5b5] pb-6">Social</span>
+          <span className="block font-bold text-[#b5b5b5] pb-4">Social</span>
           <ul>
             <li className="mt-1 text-lg">
               <a href="#">GitHub</a>
