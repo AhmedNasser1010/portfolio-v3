@@ -1,0 +1,62 @@
+{
+  "HomePage": {
+    "hero": {
+      "firstName": "Ahmed",
+      "intro": "👋, my name is Ahmed and I'm a freelance",
+      "role": "Web Developer",
+      "secondaryRole": "& Problem Solving",
+      "location": "based in Giza, Egypt",
+      "ctaHire": "Hire me",
+      "ctaWorks": "My works"
+    },
+    "about": {
+      "sectionTitle": "My Name Is",
+      "fullName": "Ahmed Nasser",
+      "description": "Passionate Front-End Web Developer with solid experience in HTML, CSS, JavaScript, and React. He crafts seamless, engaging user experiences and brings creativity and precision to every digital project.",
+      "ctaContact": "Get in touch",
+      "ctaResume": "Resume"
+    },
+    "tech": {
+      "frontend": "FRONTEND",
+      "cloudBackend": "CLOUD & BACKEND SERVICES"
+    },
+    "contact": {
+      "title": "Let’s Talk",
+      "subtitle": "I’d like to hear from you!",
+      "description": "If you have any inquiries or just want to say hi, please use the contact form!",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Spark my curiosity ✨",
+      "send": "Send"
+    },
+    "navigation": {
+      "home": "Home",
+      "technologies": "Technologies",
+      "social": "Social",
+      "linkedin": "Linkedin",
+      "facebook": "Facebook",
+      "oldVersion": "Old Version",
+      "menu": "Menu",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact",
+      "github": "Github",
+      "whatsapp": "WhatsApp",
+      "ctaContact": "Get in touch"
+    },
+    "footer": {
+      "tagline": "Building clean, scalable and user-focused web experiences.",
+      "copyright": "© 2026 Ahmed Nasser. All rights reserved."
+    }
+  },
+  "ProjectPage": {
+    "title": "Projects",
+    "backToProjects": "Back To Projects.",
+    "about": "About",
+    "technologies": "Technologies",
+    "website": "Website",
+    "github": "Github",
+    "gallery": "Gallery",
+    "description": "Description"
+  }
+}

@@ -1,35 +1,61 @@
+"use client";
 import { LuHash } from "react-icons/lu";
 import { BurgerMenu, Container } from "@/components/ui";
+import { useLocale, useTranslations } from "next-intl";
+import { Sidebar } from "@/components";
+import { useRef, useState } from "react";
+import LangSwitch from "@/components/ui/LangSwitch";
+import { styleEnAr } from "@/lib/utils/styleEnAr";
 
-interface HeaderProps {
-  open: boolean;
-  handleMenuToggle: (arg0?: boolean) => void;
-  menuBtnRef: React.RefObject<HTMLButtonElement | null>;
-}
+const Header = () => {
+  const locale = useLocale();
+  const t = useTranslations("HomePage.hero");
 
-const Header = ({ open, handleMenuToggle, menuBtnRef }: HeaderProps) => {
+  const [open, setOpen] = useState(false);
+  const menuBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  const handleMenuToggle = (value?: boolean) => {
+    if (typeof value === "boolean") {
+      setOpen(value);
+      return;
+    }
+    setOpen(!open);
+  };
+
   return (
-    <div>
-      <p className="w-full text-lg mt-2 mb-[5px] font-palatino text-center">
-        بِـسْـمِ الـلَّـهِ الـرَّحْـمَـنِ الـرَّحِـيـمِ
-      </p>
-      <header>
-        <Container>
-          <nav className="flex justify-between items-center px-[30px]">
-            <div className="font-dmSerif flex items-center text-[28px]">
-              <LuHash />
-              <h1>Ahmed</h1>
-            </div>
+    <>
+      <div>
+        <p className="w-full mt-2 mb-[5px] font-palatino text-center">
+          بِـسْـمِ الـلَّـهِ الـرَّحْـمَـنِ الـرَّحِـيـمِ
+        </p>
+        <header>
+          <Container>
+            <nav className="flex text-xs justify-between items-center">
+              <div
+                className={`${styleEnAr(locale, "font-dmSerif", "font-myriad")} flex items-center text-[28px]`}
+              >
+                <LuHash />
+                <h1>{t("firstName")}</h1>
+              </div>
 
-            <BurgerMenu
-              open={open}
-              handleMnuToggle={handleMenuToggle}
-              ref={menuBtnRef}
-            />
-          </nav>
-        </Container>
-      </header>
-    </div>
+              <div className="flex items-center gap-2">
+                <LangSwitch />
+                <BurgerMenu
+                  open={open}
+                  handleMnuToggle={handleMenuToggle}
+                  ref={menuBtnRef}
+                />
+              </div>
+            </nav>
+          </Container>
+        </header>
+      </div>
+      <Sidebar
+        open={open}
+        handleMenuToggle={handleMenuToggle}
+        menuBtnRef={menuBtnRef}
+      />
+    </>
   );
 };
 

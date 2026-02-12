@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import Link from "next/link";
+import { Link }  from '@/i18n/navigation';
 import { MdArrowOutward } from "react-icons/md";
 
 export interface ListItemProps {

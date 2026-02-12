@@ -1,6 +1,8 @@
+"use client";
 import { motion } from "motion/react";
 import { BurgerMenu, ListItem } from "@/components/ui";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 
 interface MenuProps {
   open: boolean;
@@ -9,6 +11,7 @@ interface MenuProps {
 }
 
 const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
+  const t = useTranslations("HomePage.navigation");
   const asideRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -52,7 +55,7 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
       <div className="h-[60%] flex flex-col justify-between">
         <div className="pb-8">
           <div className="pb-4 flex items-center justify-between">
-            <span className="font-bold text-[#b5b5b5]">Menu</span>
+            <span className="font-bold text-[#b5b5b5]">{t("menu")}</span>
             <BurgerMenu
               open={open}
               handleMnuToggle={handleMenuToggle}
@@ -61,27 +64,27 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
           </div>
           <ul className="flex flex-col gap-3">
             <ListItem
-              title="Home"
+              title={t("home")}
               link="#home"
               onClick={() => handleMenuToggle(false)}
             />
             <ListItem
-              title="About"
+              title={t("about")}
               link="#about"
               onClick={() => handleMenuToggle(false)}
             />
             <ListItem
-              title="Tech Stack"
+              title={t("technologies")}
               link="#tech-stack"
               onClick={() => handleMenuToggle(false)}
             />
             <ListItem
-              title="Project"
+              title={t("projects")}
               link="#projects"
               onClick={() => handleMenuToggle(false)}
             />
             <ListItem
-              title="Contact"
+              title={t("contact")}
               link="#contact"
               onClick={() => handleMenuToggle(false)}
             />
@@ -89,19 +92,21 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
         </div>
 
         <div>
-          <span className="block font-bold text-[#b5b5b5] pb-4">Social</span>
+          <span className="block font-bold text-[#b5b5b5] pb-4">
+            {t("social")}
+          </span>
           <ul>
             <li className="mt-1 text-lg">
-              <a href="#">GitHub</a>
+              <a href="#">{t("github")}</a>
             </li>
             <li className="mt-1 text-lg">
-              <a href="#">LinkedIn</a>
+              <a href="#">{t("linkedin")}</a>
             </li>
             <li className="mt-1 text-lg">
-              <a href="#">WhatsApp</a>
+              <a href="#">{t("whatsapp")}</a>
             </li>
             <li className="mt-1 text-lg">
-              <a href="#">Old version</a>
+              <a href="#">{t("oldVersion")}</a>
             </li>
           </ul>
         </div>
@@ -109,7 +114,7 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
 
       <div>
         <span className="block font-bold text-[#b5b5b5] pb-6">
-          Get in touch
+          {t("ctaContact")}
         </span>
         <a href="mailto:ahmedn.coder@gmail.com" className="block">
           ahmedn.coder@gmail.com

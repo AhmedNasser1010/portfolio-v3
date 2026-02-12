@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui";
-import Link from "next/link";
+import { Link}  from '@/i18n/navigation';
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
 export default function Loading() {

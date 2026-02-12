@@ -1,19 +1,24 @@
 import { ProjectsData } from "@/components/features/projects-section/Projects";
 import { Container } from "@/components/ui";
 import { cleanLink } from "@/lib/utils/cleanLink";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
-import { Suspense, use } from "react";
+import { Suspense } from "react";
 import { FaGithub, FaLongArrowAltLeft } from "react-icons/fa";
 import { IoEarthSharp } from "react-icons/io5";
 import Loading from "./loading";
+import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
+import { styleEnAr } from "@/lib/utils/styleEnAr";
 
 interface Props {
   params: Promise<{ project: string }>;
 }
 
-export default function ProjectPage({ params }: Props) {
-  const { project } = use(params);
+export default async function ProjectPage({ params }: Props) {
+  const locale = await getLocale();
+  setRequestLocale(locale);
+  const t = await getTranslations("ProjectPage");
+  const { project } = await params;
 
   const currentProject = ProjectsData.find(
     (p) => p.title.toLowerCase().replace(/\s+/g, "-") === project,
@@ -40,9 +45,15 @@ export default function ProjectPage({ params }: Props) {
           <div className="mb-12">
             <div className="flex items-center justify-between mb-3">
               <Link href="/">
-                <FaLongArrowAltLeft className="text-[#b5b5b5]" />
+                <FaLongArrowAltLeft
+                  className={`${styleEnAr(locale, "", "-scale-x-100")} text-[#b5b5b5]`}
+                />
               </Link>
-              <span className="font-futura text-lg">Back to Projects.</span>
+              <span
+                className={`${styleEnAr(locale, "font-futura", "font-myriad")} text-lg`}
+              >
+                {t("backToProjects")}
+              </span>
             </div>
             <span className="block w-full border-b border-[#b5b5b5]"></span>
           </div>
@@ -71,7 +82,11 @@ export default function ProjectPage({ params }: Props) {
 
           <div className="md:flex md:flex-row-reverse md:items-start md:justify-between md:gap-8 md:mb-12">
             <div className="w-full md:flex-1">
-              <h3 className="font-futura text-3xl mb-4">Description</h3>
+              <h3
+                className={`${styleEnAr(locale, "font-futura", "font-montserrat")} text-3xl mb-4`}
+              >
+                {t("description")}
+              </h3>
               <p className="mb-6 text-[#545454]">
                 {currentProject.description}
               </p>
@@ -79,7 +94,11 @@ export default function ProjectPage({ params }: Props) {
 
             <div className="w-full md:w-[320px] md:shrink-0">
               <div>
-                <h3 className="font-futura text-3xl mb-4">Technologies</h3>
+                <h3
+                  className={`${styleEnAr(locale, "font-futura", "font-montserrat")} text-3xl mb-4`}
+                >
+                  {t("technologies")}
+                </h3>
                 <div className="flex flex-wrap gap-2 mt-4 mb-6">
                   {currentProject.technologies.map((tech, index) => (
                     <span
@@ -96,7 +115,7 @@ export default function ProjectPage({ params }: Props) {
                 <div className="mb-6">
                   <div className="flex items-center mb-2">
                     <IoEarthSharp className="text-[#b5b5b5] text-3xl" />
-                    <h4 className="font-futura text-xl pl-2">Website</h4>
+                    <h4 className="font-futura text-xl pl-2">{t("website")}</h4>
                   </div>
 
                   <a
@@ -111,7 +130,7 @@ export default function ProjectPage({ params }: Props) {
                 <div>
                   <div className="flex items-center mb-2">
                     <FaGithub className="text-[#b5b5b5] text-3xl" />
-                    <h4 className="font-futura text-xl pl-2">Github</h4>
+                    <h4 className="font-futura text-xl pl-2">{t("github")}</h4>
                   </div>
 
                   <a
@@ -128,7 +147,11 @@ export default function ProjectPage({ params }: Props) {
           </div>
 
           <div>
-            <h3 className="font-futura text-3xl mb-4">Gallery</h3>
+            <h3
+              className={`${styleEnAr(locale, "font-futura", "font-montserrat")} text-3xl mb-4`}
+            >
+              {t("gallery")}
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
               {currentProject.gallery.map((image, index) => (
                 <img

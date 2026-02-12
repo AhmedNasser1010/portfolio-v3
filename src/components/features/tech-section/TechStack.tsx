@@ -1,6 +1,8 @@
 "use client";
 
 import { Container, InfiniteCarousel } from "@/components/ui";
+import { styleEnAr } from "@/lib/utils/styleEnAr";
+import { useLocale, useTranslations } from "next-intl";
 
 const iconsPath = "/icons/tech-stack/";
 
@@ -30,13 +32,17 @@ const technologies = {
 };
 
 const TechStack = () => {
+  const locale = useLocale();
+  const t = useTranslations("HomePage.tech");
   return (
-    <section className="w-full bg-white" id="tech-stack">
+    <section className="w-full bg-white" id="tech-stack" dir="ltr">
       <Container>
         <div className="py-12">
           <div className="pb-12">
-            <h3 className="text-center pb-5 font-archivo font-bold text-xl">
-              FRONTEND
+            <h3
+              className={`${styleEnAr(locale, "font-archivo", "font-montserrat")} text-center pb-5 font-bold text-xl`}
+            >
+              {t("frontend")}
             </h3>
 
             <div className="-mx-6">
@@ -63,8 +69,10 @@ const TechStack = () => {
           </div>
 
           <div>
-            <h3 className="text-center pb-5 font-archivo font-bold text-xl">
-              CLOUD & BACKEND SERVICES
+            <h3
+              className={`${styleEnAr(locale, "font-archivo", "font-montserrat")} text-center pb-5 font-bold text-xl`}
+            >
+              {t("cloudBackend")}
             </h3>
 
             <div className="-mx-6">
