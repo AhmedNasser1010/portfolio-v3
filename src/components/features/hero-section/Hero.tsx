@@ -38,7 +38,7 @@ const Hero = async () => {
             </div>
           </div>
 
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 min-w-[410px] min-h-[564px]">
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 min-w-[410px] min-h-[564px] hidden">
             <Image
               src="/images/me.webp"
               width={410}

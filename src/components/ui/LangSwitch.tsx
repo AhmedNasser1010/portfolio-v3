@@ -3,7 +3,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { HiMiniLanguage } from "react-icons/hi2";
 
-export default function LangSwitch() {
+export default function LangSwitch({ color = "#202020" }: { color?: string }) {
   const locale = useLocale();
   const pathname = usePathname();
 
@@ -11,11 +11,11 @@ export default function LangSwitch() {
     <div>
       {locale === "en" ? (
         <Link href={pathname} locale="ar">
-          <HiMiniLanguage className="text-lg" />
+          <HiMiniLanguage className="text-lg transition-colors duration-200" style={{ color }} />
         </Link>
       ) : (
         <Link href={pathname} locale="en">
-          <HiMiniLanguage className="text-lg" />
+          <HiMiniLanguage className="text-lg transition-colors duration-200" style={{ color }} />
         </Link>
       )}
     </div>

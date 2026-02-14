@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "motion/react";
-import { BurgerMenu, ListItem } from "@/components/ui";
+import { ListItem } from "@/components/ui";
 import { useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 interface MenuProps {
   open: boolean;
@@ -11,8 +11,10 @@ interface MenuProps {
 }
 
 const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
+  const locale = useLocale();
   const t = useTranslations("HomePage.navigation");
   const asideRef = useRef<HTMLDivElement | null>(null);
+  const isEn = locale === "en";
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -35,7 +37,7 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
   return (
     <motion.aside
       ref={asideRef}
-      className="bg-[#202020] px-12 pb-9 pt-10 fixed top-0 right-0 translate-x-full w-[320px] h-full p-6 text-white gap-10 lg:flex z-50 flex flex-col justify-between"
+      className={`bg-[#202020] px-12 pb-9 pt-10 fixed top-0 ${isEn ? "left-0" : "right-0"} w-[320px] h-full p-6 text-white gap-10 lg:flex z-50 flex flex-col justify-between`}
       variants={{
         open: {
           x: 0,
@@ -43,9 +45,11 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
           transition: { duration: 0.6, ease: "circInOut" },
         },
         closed: {
-          x: "100%",
-          borderTopLeftRadius: "50%",
-          borderBottomLeftRadius: "50%",
+          x: isEn ? "-100%" : "100%",
+          borderTopLeftRadius: isEn ? 0 : "50%",
+          borderBottomLeftRadius: isEn ? 0 : "50%",
+          borderTopRightRadius: isEn ? "50%" : 0,
+          borderBottomRightRadius: isEn ? "50%" : 0,
           transition: { duration: 0.6, ease: "circInOut" },
         },
       }}
@@ -56,11 +60,6 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
         <div className="pb-8">
           <div className="pb-4 flex items-center justify-between">
             <span className="font-bold text-[#b5b5b5]">{t("menu")}</span>
-            <BurgerMenu
-              open={open}
-              handleMnuToggle={handleMenuToggle}
-              ref={menuBtnRef}
-            />
           </div>
           <ul className="flex flex-col gap-3">
             <ListItem

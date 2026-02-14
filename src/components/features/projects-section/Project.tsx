@@ -1,16 +1,19 @@
 import { Badge } from "@/components/ui";
 import { ProjectProps } from "./Projects";
 import { MdArrowOutward } from "react-icons/md";
+import { styleEnAr } from "@/lib/utils/styleEnAr";
+import { getLocale } from "next-intl/server";
 
 const heights = [310, 400, 454];
 
-const Project = ({
+const Project = async ({
   project,
   index,
 }: {
   project: ProjectProps;
   index: number;
 }) => {
+  const locale = await getLocale();
   const height = heights[index % heights.length];
 
   return (
@@ -38,7 +41,7 @@ const Project = ({
             <p className="mb-2 text-sm w-3/4">{project.summary}</p>
           </div>
 
-          <MdArrowOutward className="w-8 mt-4" />
+          <MdArrowOutward className={`${styleEnAr(locale, "", "-scale-x-100")} w-8 mt-4`} />
         </div>
 
         <div className="flex flex-wrap gap-2 mt-4">
