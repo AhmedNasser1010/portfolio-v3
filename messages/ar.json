@@ -27,7 +27,11 @@
       "name": "الاسم",
       "email": "الإيميل",
       "subject": "ادّيني دفعة ✨",
-      "send": "إرسال"
+      "send": "إرسال",
+      "emailSuccess": "تم الإرسال",
+      "emailFailed": "تعذر إرسال الرسالة.",
+      "emailCriticalError": "عفوًا، حدث خطأ. يرجى المحاولة مرة أخرى لاحقًا.",
+      "sendingEmail": "جاري الإرسال.."
     },
     "navigation": {
       "home": "الرئيسية",

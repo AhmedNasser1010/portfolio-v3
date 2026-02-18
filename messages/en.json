@@ -27,7 +27,11 @@
       "name": "Name",
       "email": "Email",
       "subject": "Spark my curiosity ✨",
-      "send": "Send"
+      "send": "Send",
+      "emailSuccess": "Email sent",
+      "emailFailed": "Unable to send the message.",
+      "emailCriticalError": "Oops, an error occurred. Please try again later.",
+      "sendingEmail": "Sending.."
     },
     "navigation": {
       "home": "Home",
