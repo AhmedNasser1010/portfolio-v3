@@ -3,6 +3,7 @@ import { ProjectProps } from "./Projects";
 import { MdArrowOutward } from "react-icons/md";
 import { styleEnAr } from "@/lib/utils/styleEnAr";
 import { getLocale } from "next-intl/server";
+import { titleToKebab } from "@/lib/utils";
 
 const heights = [310, 400, 454];
 
@@ -20,6 +21,7 @@ const Project = async ({
     <div
       className="relative overflow-hidden rounded-xl p-3 text-white flex flex-col justify-end cursor-pointer"
       style={{ height }}
+      id={titleToKebab(project.title)}
     >
       <video
         autoPlay
@@ -41,7 +43,9 @@ const Project = async ({
             <p className="mb-2 text-sm w-3/4">{project.summary}</p>
           </div>
 
-          <MdArrowOutward className={`${styleEnAr(locale, "", "-scale-x-100")} w-8 mt-4`} />
+          <MdArrowOutward
+            className={`${styleEnAr(locale, "", "-scale-x-100")} w-8 mt-4`}
+          />
         </div>
 
         <div className="flex flex-wrap gap-2 mt-4">

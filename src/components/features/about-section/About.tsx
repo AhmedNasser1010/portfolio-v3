@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { Container, Button } from "@/components/ui";
 import { getLocale, getTranslations } from "next-intl/server";
 import { styleEnAr } from "@/lib/utils/styleEnAr";
+import { LINKS } from "@/constants";
 
 const About = async () => {
   const locale = await getLocale();
@@ -48,7 +49,7 @@ const About = async () => {
                 <Link href="#contact">{t("ctaContact")}</Link>
               </Button>
               <Button variant="outlineDark" asChild>
-                <a href="#">{t("ctaResume")}</a>
+                <a href={LINKS.resume} target="_blank">{t("ctaResume")}</a>
               </Button>
             </div>
           </div>

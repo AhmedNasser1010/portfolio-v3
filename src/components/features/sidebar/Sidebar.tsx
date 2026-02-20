@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { ListItem } from "@/components/ui";
 import { useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { LINKS } from "@/constants";
 
 interface MenuProps {
   open: boolean;
@@ -96,17 +97,17 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
           </span>
           <ul>
             <li className="mt-1 text-lg">
-              <a href="#">{t("github")}</a>
+              <a href={LINKS.github} target="_blank">{t("github")}</a>
             </li>
             <li className="mt-1 text-lg">
-              <a href="#">{t("linkedin")}</a>
+              <a href={LINKS.linkedin} target="_blank">{t("linkedin")}</a>
             </li>
             <li className="mt-1 text-lg">
-              <a href="#">{t("whatsapp")}</a>
+              <a href={LINKS.whatsapp} target="_blank">{t("whatsapp")}</a>
             </li>
-            <li className="mt-1 text-lg">
-              <a href="#">{t("oldVersion")}</a>
-            </li>
+            {/* <li className="mt-1 text-lg">
+              <a href="#" target="_blank">{t("oldVersion")}</a>
+            </li> */}
           </ul>
         </div>
       </div>
@@ -115,9 +116,10 @@ const Sidebar = ({ open, handleMenuToggle, menuBtnRef }: MenuProps) => {
         <span className="block font-bold text-[#b5b5b5] pb-6">
           {t("ctaContact")}
         </span>
-        <a href="mailto:ahmedn.coder@gmail.com" className="block">
-          ahmedn.coder@gmail.com
+        <a href="mailto:ahmedn.coder@gmail.com" className="block mb-1">
+          {LINKS.email}
         </a>
+        <a href={`tel:${LINKS.phone}`}>{LINKS.phone}</a>
       </div>
     </motion.aside>
   );

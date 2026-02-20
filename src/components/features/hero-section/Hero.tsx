@@ -13,7 +13,7 @@ const Hero = async () => {
         className="bg-white pt-0 h-screen flex flex-col justify-between px-0"
         id="home"
       >
-        <div className="flex items-center justify-center h-[40%]">
+        <div className="flex items-center justify-center h-[150px]">
           <h3 className="text-center">{t("intro")}</h3>
         </div>
 
@@ -38,7 +38,7 @@ const Hero = async () => {
             </div>
           </div>
 
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 min-w-[410px] min-h-[564px] hidden">
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 min-w-[410px] min-h-[564px]">
             <Image
               src="/images/me.webp"
               width={410}

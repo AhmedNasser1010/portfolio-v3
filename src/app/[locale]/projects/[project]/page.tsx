@@ -1,4 +1,3 @@
-import { ProjectsData } from "@/components/features/projects-section/Projects";
 import { Container } from "@/components/ui";
 import { cleanLink } from "@/lib/utils/cleanLink";
 import { Link } from "@/i18n/navigation";
@@ -9,6 +8,8 @@ import { IoEarthSharp } from "react-icons/io5";
 import Loading from "./loading";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import { styleEnAr } from "@/lib/utils/styleEnAr";
+import { titleToKebab } from "@/lib/utils";
+import { PROJECTS } from "@/constants";
 
 interface Props {
   params: Promise<{ project: string }>;
@@ -20,7 +21,7 @@ export default async function ProjectPage({ params }: Props) {
   const t = await getTranslations("ProjectPage");
   const { project } = await params;
 
-  const currentProject = ProjectsData.find(
+  const currentProject = PROJECTS.find(
     (p) => p.title.toLowerCase().replace(/\s+/g, "-") === project,
   );
 
@@ -44,7 +45,7 @@ export default async function ProjectPage({ params }: Props) {
           />
           <div className="mb-12">
             <div className="flex items-center justify-between mb-3">
-              <Link href="/">
+              <Link href={`/#${titleToKebab(currentProject.title)}`}>
                 <FaLongArrowAltLeft
                   className={`${styleEnAr(locale, "", "-scale-x-100")} text-[#b5b5b5]`}
                 />
