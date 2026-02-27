@@ -5,12 +5,13 @@ import "./globals.css";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { setRequestLocale } from "next-intl/server";
-
-type Props = {
-  children: React.ReactNode;
-  params: { locale: string };
-};
+import {
+  getLocale,
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
+import { CONSTANTS } from "@/constants";
 
 const openSans = Open_Sans({
   variable: "--font-open",
@@ -70,24 +71,69 @@ const futura = localFont({
   ],
 });
 
-export const metadata: Metadata = {
-  title: "Ahmed Nasser | Frontend Web Developer",
-  description:
-    "Passionate Front-End Web Developer with solid experience in HTML, CSS, JavaScript, and React. He crafts seamless, engaging user experiences and brings creativity and precision to every digital project.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations("HomePage.metadata");
+
+  return {
+    metadataBase: new URL(CONSTANTS.baseUrl),
+    title: t("title"),
+    description: t("description"),
+
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: "/en",
+        ar: "/ar",
+      },
+    },
+
+    openGraph: {
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      url: `${CONSTANTS.baseUrl}/${locale}`,
+      siteName: "Ahmed Nasser",
+      locale: locale === "ar" ? "ar_EG" : "en_US",
+      type: "website",
+      images: [
+        {
+          url: `${CONSTANTS.baseUrl}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: t("ogImageAlt"),
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      images: [`${CONSTANTS.baseUrl}/og-image.jpg`],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return [{ locale: "ar" }, { locale: "en" }];
 }
 
-export default function LocaleLayout({ children, params }: Props) {
-  const { locale } = params;
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
   setRequestLocale(locale);
+
+  const messages = await getMessages();
 
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
@@ -104,7 +150,9 @@ export default function LocaleLayout({ children, params }: Props) {
           antialiased
           `}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

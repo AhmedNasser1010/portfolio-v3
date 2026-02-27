@@ -1,6 +1,7 @@
 export type ProjectType = {
   title: string;
   video: string;
+  ogImage: string;
   gallery: string[];
   summary: string;
   description: string;
@@ -13,6 +14,7 @@ export const PROJECTS: ProjectType[] = [
   {
     title: "OrderSync",
     video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
     gallery: [
       "/images/projects/ordersync/ordersync-customer.png",
       "/images/projects/ordersync/ordersync-orders.png",
@@ -29,6 +31,7 @@ export const PROJECTS: ProjectType[] = [
   {
     title: "Davon Online School",
     video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
     gallery: [
       "/images/projects/ordersync/ordersync-customer.png",
       "/images/projects/ordersync/ordersync-orders.png",
@@ -46,6 +49,7 @@ export const PROJECTS: ProjectType[] = [
   {
     title: "UAE Adventure",
     video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
     gallery: [
       "/images/projects/ordersync/ordersync-customer.png",
       "/images/projects/ordersync/ordersync-orders.png",
@@ -63,6 +67,7 @@ export const PROJECTS: ProjectType[] = [
   {
     title: "WebNexus",
     video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
     gallery: [
       "/images/projects/ordersync/ordersync-customer.png",
       "/images/projects/ordersync/ordersync-orders.png",
@@ -80,6 +85,7 @@ export const PROJECTS: ProjectType[] = [
   {
     title: "Code Ninjas",
     video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
     gallery: [
       "/images/projects/ordersync/ordersync-customer.png",
       "/images/projects/ordersync/ordersync-orders.png",
@@ -97,6 +103,7 @@ export const PROJECTS: ProjectType[] = [
   {
     title: "To-Do App",
     video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
     gallery: [
       "/images/projects/ordersync/ordersync-customer.png",
       "/images/projects/ordersync/ordersync-orders.png",
@@ -114,6 +121,7 @@ export const PROJECTS: ProjectType[] = [
   {
     title: "Leon",
     video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
     gallery: [
       "/images/projects/ordersync/ordersync-customer.png",
       "/images/projects/ordersync/ordersync-orders.png",

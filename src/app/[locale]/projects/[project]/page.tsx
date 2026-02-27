@@ -9,7 +9,64 @@ import Loading from "./loading";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import { styleEnAr } from "@/lib/utils/styleEnAr";
 import { titleToKebab } from "@/lib/utils";
-import { PROJECTS } from "@/constants";
+import { CONSTANTS, PROJECTS } from "@/constants";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = await getLocale();
+  const { project } = await params;
+
+  const t = await getTranslations({
+    locale,
+    namespace: "Projects",
+  });
+
+  const currentProject = PROJECTS.find(
+    (p) => p.title.toLowerCase().replace(/\s+/g, "-") === project,
+  );
+
+  if (!currentProject) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: currentProject.title,
+    description: currentProject.description,
+
+    alternates: {
+      canonical: `/${locale}/projects/${project}`,
+      languages: {
+        en: `/en/projects/${project}`,
+        ar: `/ar/projects/${project}`,
+      },
+    },
+
+    openGraph: {
+      title: currentProject.title,
+      description: currentProject.description,
+      url: `${CONSTANTS.baseUrl}/${locale}/projects/${project}`,
+      type: "article",
+      locale: locale === "ar" ? "ar_EG" : "en_US",
+      images: [
+        {
+          url: `${CONSTANTS.baseUrl}${currentProject.ogImage}`,
+          width: 1200,
+          height: 630,
+          alt: currentProject.title,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: currentProject.title,
+      description: currentProject.description,
+      images: [`${CONSTANTS.baseUrl}${currentProject.ogImage}`],
+    },
+  };
+}
 
 interface Props {
   params: Promise<{ project: string }>;

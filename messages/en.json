@@ -1,5 +1,12 @@
 {
   "HomePage": {
+    "metadata": {
+      "title": "Ahmed Nasser | Full Stack Developer",
+      "description": "Portfolio of Ahmed Nasser, a full stack web developer specializing in modern web technologies.",
+      "ogTitle": "Ahmed Nasser Portfolio",
+      "ogDescription": "Explore projects, skills, and experience.",
+      "ogImageAlt": "Ahmed Nasser Portfolio Preview"
+    },
     "hero": {
       "firstName": "Ahmed",
       "intro": "👋, my name is Ahmed and I'm a freelance",

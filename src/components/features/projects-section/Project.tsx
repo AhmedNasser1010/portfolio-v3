@@ -1,9 +1,9 @@
 import { Badge } from "@/components/ui";
-import { ProjectProps } from "./Projects";
 import { MdArrowOutward } from "react-icons/md";
 import { styleEnAr } from "@/lib/utils/styleEnAr";
 import { getLocale } from "next-intl/server";
 import { titleToKebab } from "@/lib/utils";
+import { ProjectType } from "@/constants/projects";
 
 const heights = [310, 400, 454];
 
@@ -11,7 +11,7 @@ const Project = async ({
   project,
   index,
 }: {
-  project: ProjectProps;
+  project: ProjectType;
   index: number;
 }) => {
   const locale = await getLocale();
