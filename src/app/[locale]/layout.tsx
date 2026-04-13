@@ -139,7 +139,7 @@ export default async function LocaleLayout({
   const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Person",
-    name: "Ahmed Nasser",
+    name: t("name"),
     url: `https://ahmednasser-portfolio.vercel.app/${locale}`,
     image: "https://ahmednasser-portfolio.vercel.app/og-image.webp",
     sameAs: [
