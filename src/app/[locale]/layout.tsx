@@ -126,6 +126,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations("HomePage.metadata");
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -134,6 +135,44 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const messages = await getMessages();
+
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    name: "Ahmed Nasser",
+    url: `https://ahmednasser-portfolio.vercel.app/${locale}`,
+    image: "https://ahmednasser-portfolio.vercel.app/og-image.webp",
+    sameAs: [
+      "https://www.linkedin.com/in/ahmednasser2004/",
+      "https://github.com/AhmedNasser1010",
+      `https://ahmednasser-portfolio.vercel.app/${locale}`,
+    ],
+    jobTitle: t("jobTitle"),
+    description: t("description"),
+    homeLocation: {
+      "@type": "Place",
+      name: "Egypt",
+    },
+    worksFor: {
+      "@type": "Organization",
+      name: t("worksFor"),
+    },
+    knowsAbout: [
+      "Next.js",
+      "React",
+      "Backend-as-a-Service",
+      "Firebase",
+      "Supabase",
+      "TypeScript",
+      "SEO",
+      "Web Performance",
+    ],
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Taiba Institute",
+    },
+    inLanguage: locale,
+  };
 
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
@@ -153,6 +192,13 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
       </body>
     </html>
   );
