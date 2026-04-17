@@ -21,6 +21,7 @@ const BurgerMenu = ({
       whileHover={open ? {} : "hover"}
       initial="normal"
       animate={open ? "close" : "normal"}
+      aria-label="Open menu"
     >
       <motion.span
         className="w-10 h-[3px] block rounded-md"

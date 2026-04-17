@@ -14,7 +14,7 @@ const Hero = async () => {
         id="home"
       >
         <div className="flex items-center justify-center h-[150px]">
-          <h3 className="text-center">{t("intro")}</h3>
+          <p className="text-center">{t("intro")}</p>
         </div>
 
         <main className="relative h-[60%]">

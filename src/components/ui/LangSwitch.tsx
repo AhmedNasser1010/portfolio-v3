@@ -10,12 +10,26 @@ export default function LangSwitch({ color = "#202020" }: { color?: string }) {
   return (
     <div>
       {locale === "en" ? (
-        <Link href={pathname} locale="ar">
-          <HiMiniLanguage className="text-lg transition-colors duration-200" style={{ color }} />
+        <Link
+          href={pathname}
+          locale="ar"
+          aria-label="Switch language to Arabic"
+        >
+          <HiMiniLanguage
+            className="text-lg transition-colors duration-200"
+            style={{ color }}
+          />
         </Link>
       ) : (
-        <Link href={pathname} locale="en">
-          <HiMiniLanguage className="text-lg transition-colors duration-200" style={{ color }} />
+        <Link
+          href={pathname}
+          locale="en"
+          aria-label="Switch language to English"
+        >
+          <HiMiniLanguage
+            className="text-lg transition-colors duration-200"
+            style={{ color }}
+          />
         </Link>
       )}
     </div>
