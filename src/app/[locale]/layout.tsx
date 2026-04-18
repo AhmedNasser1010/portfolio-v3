@@ -80,6 +80,10 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("title"),
     description: t("description"),
 
+    verification: {
+      google: "t7xTRdDTMoG_WrKoDcYA8XCZnhN2qZ-u6YYfkSTWaQg",
+    },
+
     alternates: {
       canonical: `/${locale}`,
       languages: {

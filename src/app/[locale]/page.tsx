@@ -6,7 +6,7 @@ import {
   Projects,
   Contact,
 } from "@/components";
-import WindowSize from "@/components/WindowSize";
+// import WindowSize from "@/components/WindowSize";
 import Footer from "@/components/features/footer/Footer";
 import { getLocale, setRequestLocale } from "next-intl/server";
 
@@ -15,7 +15,7 @@ const Home = async () => {
   setRequestLocale(locale);
   return (
     <main className="overflow-x-hidden">
-      <WindowSize />
+      {/* <WindowSize /> */}
 
       <Header />
 
