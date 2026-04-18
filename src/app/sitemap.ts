@@ -1,40 +1,43 @@
 import { MetadataRoute } from "next";
-import { PROJECTS } from "@/constants";
+import { PROJECTS, CONSTANTS } from "@/constants";
 
-const BASE_URL = "https://ahmednasser-portfolio.vercel.app";
-
-const locales = ["en", "ar"];
+const { baseUrl } = CONSTANTS;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [];
 
-  locales.forEach((locale) => {
-    // Home page
+  // Home
+  routes.push({
+    url: `${baseUrl}/en`,
+    lastModified: new Date(),
+    changeFrequency: "yearly",
+    priority: 1,
+    images: [`${baseUrl}/og-image.webp`],
+    alternates: {
+      languages: {
+        en: `${baseUrl}/en`,
+        ar: `${baseUrl}/ar`,
+      },
+    },
+  });
+
+  // Projects
+  PROJECTS.forEach((project) => {
+    const slug = project.title.toLowerCase().replace(/\s+/g, "-");
+    const images = project.gallery.map((img) => `${baseUrl}${img}`);
+
     routes.push({
-      url: `${BASE_URL}/${locale}`,
+      url: `${baseUrl}/en/projects/${slug}`,
       lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+      images,
       alternates: {
         languages: {
-          en: `${BASE_URL}/en`,
-          ar: `${BASE_URL}/ar`,
+          en: `${baseUrl}/en/projects/${slug}`,
+          ar: `${baseUrl}/ar/projects/${slug}`,
         },
       },
-    });
-
-    // Projects pages
-    PROJECTS.forEach((project) => {
-      const slug = project.title.toLowerCase().replace(/\s+/g, "-");
-
-      routes.push({
-        url: `${BASE_URL}/${locale}/projects/${slug}`,
-        lastModified: new Date(),
-        alternates: {
-          languages: {
-            en: `${BASE_URL}/en/projects/${slug}`,
-            ar: `${BASE_URL}/ar/projects/${slug}`,
-          },
-        },
-      });
     });
   });
 
