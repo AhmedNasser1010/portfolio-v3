@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui";
 import { MdArrowOutward } from "react-icons/md";
 import { styleEnAr } from "@/lib/utils/styleEnAr";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { titleToKebab } from "@/lib/utils";
 import { ProjectType } from "@/constants/projects";
 
@@ -15,6 +15,9 @@ const Project = async ({
   index: number;
 }) => {
   const locale = await getLocale();
+  const t = await getTranslations("Projects");
+  const slug = titleToKebab(project.title);
+  const summary = t.raw(`${slug}.summary`) as string;
   const height = heights[index % heights.length];
 
   return (
@@ -40,7 +43,7 @@ const Project = async ({
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-            <p className="mb-2 text-sm w-3/4">{project.summary}</p>
+            <p className="mb-2 text-sm w-3/4">{summary}</p>
           </div>
 
           <MdArrowOutward

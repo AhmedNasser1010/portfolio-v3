@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale,
     namespace: "ProjectPage",
   });
+  const projectsT = await getTranslations({ locale, namespace: "Projects" });
 
   const currentProject = PROJECTS.find(
     (p) => p.title.toLowerCase().replace(/\s+/g, "-") === project,
@@ -32,10 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const description = projectsT.raw(`${project}.description`) as string;
+
   return {
     metadataBase: new URL(CONSTANTS.baseUrl),
     title: currentProject.title,
-    description: currentProject.description,
+    description,
 
     alternates: {
       canonical: `${CONSTANTS.baseUrl}/${locale}/projects/${project}`,
@@ -47,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     openGraph: {
       title: currentProject.title,
-      description: currentProject.description,
+      description,
       url: `${CONSTANTS.baseUrl}/${locale}/projects/${project}`,
       type: "article",
       locale: locale === "ar" ? "ar_EG" : "en_US",
@@ -64,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: currentProject.title,
-      description: currentProject.description,
+      description,
       images: [`${CONSTANTS.baseUrl}${currentProject.ogImage}`],
     },
   };
@@ -84,6 +87,7 @@ export default async function ProjectPage({ params }: Props) {
   const locale = await getLocale();
   setRequestLocale(locale);
   const t = await getTranslations("ProjectPage");
+  const projectsT = await getTranslations("Projects");
   const { project } = await params;
 
   const currentProject = PROJECTS.find(
@@ -94,11 +98,14 @@ export default async function ProjectPage({ params }: Props) {
     notFound();
   }
 
+  const summary = projectsT.raw(`${project}.summary`) as string;
+  const description = projectsT.raw(`${project}.description`) as string;
+
   const projectStructuredData = {
     "@context": "https://schema.org/",
     "@type": "CreativeWork",
     name: currentProject.title,
-    description: currentProject.description,
+    description,
     url: `${CONSTANTS.baseUrl}/${locale}/projects/${project}`,
     image: `${CONSTANTS.baseUrl}${currentProject.ogImage}`,
     author: {
@@ -165,7 +172,7 @@ export default async function ProjectPage({ params }: Props) {
                 {currentProject.title}
               </h1>
               <p className="mb-6 text-[#545454] mx-auto w-5/6 md:w-full">
-                {currentProject.summary}
+                {summary}
               </p>
             </div>
 
@@ -189,7 +196,7 @@ export default async function ProjectPage({ params }: Props) {
                 {t("description")}
               </h3>
               <p className="mb-6 text-[#545454]">
-                {currentProject.description}
+                {description}
               </p>
             </div>
 
