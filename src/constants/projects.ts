@@ -21,12 +21,49 @@ export const PROJECTS: ProjectType[] = [
       "/images/projects/ordersync/ordersync-manager.png",
       "/images/projects/ordersync/ordersync-rider.png",
     ],
-    summary: "The OrderSync system app delivers a online ordering experience. ",
+    summary:
+      "A cutting-edge online ordering system meticulously crafted for restaurants.",
     description:
-      "OrderSync is a comprehensive online ordering system designed to streamline the ordering process for customers, managers, and riders. The system consists of three main components: a customer-facing website, a manager dashboard, and a rider application. The customer-facing website allows users to browse the menu, place orders, and track their deliveries in real-time. The manager dashboard provides tools for managing orders, tracking inventory, and analyzing sales data. The rider application offers features for accepting delivery assignments, navigating to delivery locations, and updating order statuses. Overall, OrderSync aims to enhance the efficiency and convenience of online ordering for all stakeholders involved.",
-    technologies: ["Javascript", "TypeScript", "React", "Redux", "Firebase"],
-    github: "https://github.com/AhmedNasser1010/ordering-system-admin#readme",
-    view: "https://ahmed-nasser.netlify.app/",
+      "OrderSync is a comprehensive online ordering system designed to streamline the ordering process for customers, managers, and riders. The system consists of multiple components: a customer-facing PWA, an orders management app, a manager dashboard, and a rider application. The customer app allows users to browse the menu, place orders, and track their deliveries in real-time. The manager dashboard provides tools for managing orders and analyzing sales data. The rider application offers features for accepting delivery assignments, navigating to delivery locations, and updating order statuses. Built with React, TypeScript, and Firebase.",
+    technologies: ["React", "TypeScript", "Firebase", "PWA"],
+    github: "https://github.com/AhmedNasser1010/OrderSync",
+    view: "https://ordersync-customer.vercel.app",
+  },
+  {
+    title: "Mind Space",
+    video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
+    gallery: [
+      "/images/projects/ordersync/ordersync-customer.png",
+      "/images/projects/ordersync/ordersync-orders.png",
+      "/images/projects/ordersync/ordersync-manager.png",
+      "/images/projects/ordersync/ordersync-rider.png",
+    ],
+    summary:
+      "A freestyle dashboard where notes, todos, timers, habits, and links live together on an infinite canvas.",
+    description:
+      "Mind Space is a fully client-side productivity dashboard built on an infinite canvas. It supports multiple named sheets, widget types including rich text notes, todo lists, counters, timers, stopwheels, calendars, habit trackers, and quick links. Every widget can be dragged, resized, and collapsed with multi-select support. Features include 12 accent color themes, undo/redo, copy/paste across sheets, and light/dark/system theme toggle. All data is persisted to localStorage with no backend required. Built with Next.js, TypeScript, Tailwind CSS, and Zustand.",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "Radix UI"],
+    github: "https://github.com/AhmedNasser1010/mind-space",
+    view: "https://mindspace-me.vercel.app",
+  },
+  {
+    title: "Train Tracking RAG Chatbot",
+    video: "/project-videos/portfolio-v2.webm",
+    ogImage: "/images/projects/ordersync/ordersync-customer.png",
+    gallery: [
+      "/images/projects/ordersync/ordersync-customer.png",
+      "/images/projects/ordersync/ordersync-orders.png",
+      "/images/projects/ordersync/ordersync-manager.png",
+      "/images/projects/ordersync/ordersync-rider.png",
+    ],
+    summary:
+      "An AI-powered Telegram chatbot that helps users find train schedules, check delays, and get station details.",
+    description:
+      "The Train Tracking RAG Chatbot is an AI-powered chatbot deployed on Cloudflare Workers that helps users find train schedules, check delays, and get station details via Telegram. It uses a Text-to-SQL model to convert natural language questions into database queries, retrieves results from a PostgreSQL database, and generates natural language responses using a Data-to-Text model. The system supports Arabic and English, automatically tracks most used trains, and shares location-based delay improvements.",
+    technologies: ["TypeScript", "Python", "Cloudflare Workers", "PostgreSQL", "Telegram Bot API", "RAG"],
+    github: "https://github.com/AhmedNasser1010/Train-Tracking-RAG-Chatbot",
+    view: "",
   },
   {
     title: "Davon Online School",
@@ -39,100 +76,11 @@ export const PROJECTS: ProjectType[] = [
       "/images/projects/ordersync/ordersync-rider.png",
     ],
     summary:
-      "Welcome to the Davon Online School of Business Consulting! This repository contains the website landing page for our consulting school.",
+      "A multi-page landing website for a business consulting school with responsive design and smooth animations.",
     description:
-      "The Davon Online School of Business Consulting is a comprehensive online platform designed to provide high-quality business consulting education. The website serves as the landing page for our consulting school, offering visitors an overview of our courses, instructors, and unique value proposition. The landing page features a clean and modern design, with intuitive navigation and engaging content that highlights the benefits of enrolling in our courses. Visitors can easily access information about our curriculum, meet our experienced instructors, and learn about the various business consulting topics we cover. Whether you're a beginner looking to break into the field or an experienced professional seeking to enhance your skills, the Davon Online School of Business Consulting has something to offer for everyone.",
+      "Davon Online School of Business Consulting is a comprehensive multi-page landing website designed to provide high-quality business consulting education. The site features pages for Home, Who We Are, Learning Modules, Resources, Our Team, and Contact with an FAQ section. It includes a clean and modern design with intuitive navigation, responsive layouts for all devices, and smooth animations. Visitors can explore courses, meet instructors, and subscribe to the mailing list.",
     technologies: ["HTML", "CSS", "Javascript"],
-    github: "https://github.com/AhmedNasser1010/Davon-Online-School#readme",
+    github: "https://github.com/AhmedNasser1010/Davon-Online-School",
     view: "https://ahmednasser1010.github.io/Davon-Online-School/",
-  },
-  {
-    title: "UAE Adventure",
-    video: "/project-videos/portfolio-v2.webm",
-    ogImage: "/images/projects/ordersync/ordersync-customer.png",
-    gallery: [
-      "/images/projects/ordersync/ordersync-customer.png",
-      "/images/projects/ordersync/ordersync-orders.png",
-      "/images/projects/ordersync/ordersync-manager.png",
-      "/images/projects/ordersync/ordersync-rider.png",
-    ],
-    summary:
-      "UAE Adventure is a simple landing page for adventure agency with a creative design.",
-    description:
-      "UAE Adventure is a captivating landing page designed for an adventure agency, showcasing the thrilling experiences and unique offerings of the agency. The landing page features a visually stunning design that captures the essence of adventure and excitement, with vibrant colors, dynamic imagery, and engaging content. Visitors are greeted with an immersive experience that highlights the various adventure packages, destinations, and activities offered by the agency. The landing page also includes clear calls-to-action, encouraging visitors to explore further and book their next adventure with UAE Adventure. Whether it's desert safaris, dune bashing, or cultural tours, UAE Adventure promises an unforgettable experience for thrill-seekers and adventure enthusiasts alike.",
-    technologies: ["HTML", "CSS", "Javascript"],
-    github: "https://github.com/AhmedNasser1010/emirates-adventure#readme",
-    view: "https://ahmednasser1010.github.io/Davon-Online-School/",
-  },
-  {
-    title: "WebNexus",
-    video: "/project-videos/portfolio-v2.webm",
-    ogImage: "/images/projects/ordersync/ordersync-customer.png",
-    gallery: [
-      "/images/projects/ordersync/ordersync-customer.png",
-      "/images/projects/ordersync/ordersync-orders.png",
-      "/images/projects/ordersync/ordersync-manager.png",
-      "/images/projects/ordersync/ordersync-rider.png",
-    ],
-    summary:
-      "WebNexus Academy is a static website that offers a wide range of programming courses.",
-    description:
-      "WebNexus Academy is a comprehensive static website designed to provide a wide range of programming courses for learners of all levels. The website features a clean and modern design, with intuitive navigation and engaging content that highlights the various programming courses offered by WebNexus Academy. Visitors can easily access information about the curriculum, meet the experienced instructors, and learn about the unique value proposition of enrolling in WebNexus Academy. Whether you're a beginner looking to break into the field or an experienced professional seeking to enhance your skills, WebNexus Academy has something to offer for everyone.",
-    technologies: ["HTML", "CSS"],
-    github: "https://github.com/AhmedNasser1010/WebNexus-Academy#readme",
-    view: "https://ahmednasser1010.github.io/WebNexus-Academy/",
-  },
-  {
-    title: "Code Ninjas",
-    video: "/project-videos/portfolio-v2.webm",
-    ogImage: "/images/projects/ordersync/ordersync-customer.png",
-    gallery: [
-      "/images/projects/ordersync/ordersync-customer.png",
-      "/images/projects/ordersync/ordersync-orders.png",
-      "/images/projects/ordersync/ordersync-manager.png",
-      "/images/projects/ordersync/ordersync-rider.png",
-    ],
-    summary:
-      "Code Ninjas is a portfolio website for a medium-sized web development team.",
-    description:
-      "Code Ninjas is a visually appealing portfolio website designed for a medium-sized web development team. The website serves as a showcase for the team's projects, skills, and expertise in web development. With a clean and modern design, the Code Ninjas portfolio website provides an engaging user experience that highlights the team's unique value proposition and capabilities. Visitors can easily navigate through the portfolio to explore the various projects completed by the team, learn about their technical skills, and get in touch for potential collaborations or job opportunities. Whether you're a potential client looking for web development services or a fellow developer interested in connecting with the team, the Code Ninjas portfolio website offers a compelling introduction to their work and expertise.",
-    technologies: ["HTML", "CSS"],
-    github: "https://github.com/AhmedNasser1010/Code-Ninjas#readme",
-    view: "https://ahmednasser1010.github.io/Code-Ninjas/",
-  },
-  {
-    title: "To-Do App",
-    video: "/project-videos/portfolio-v2.webm",
-    ogImage: "/images/projects/ordersync/ordersync-customer.png",
-    gallery: [
-      "/images/projects/ordersync/ordersync-customer.png",
-      "/images/projects/ordersync/ordersync-orders.png",
-      "/images/projects/ordersync/ordersync-manager.png",
-      "/images/projects/ordersync/ordersync-rider.png",
-    ],
-    summary:
-      "This is a comprehensive React app that allows users to create and manage their to-do lists.",
-    description:
-      "The To-Do App is a comprehensive React application designed to help users create and manage their to-do lists efficiently. The app features a user-friendly interface that allows users to easily add, edit, and delete tasks, as well as mark them as completed. With the use of local storage, the app ensures that users' tasks are saved and persist even after refreshing the page. The To-Do App also includes features such as task categorization, due date reminders, and priority levels to help users stay organized and on top of their tasks. Whether you're a student, professional, or anyone looking to boost productivity, the To-Do App provides a simple yet powerful solution for managing your daily tasks effectively.",
-    technologies: ["Javascript", "React", "Redux", "Local Storage"],
-    github: "https://github.com/AhmedNasser1010/react-todo-app#readme",
-    view: "https://todo-ahmed.vercel.app/",
-  },
-  {
-    title: "Leon",
-    video: "/project-videos/portfolio-v2.webm",
-    ogImage: "/images/projects/ordersync/ordersync-customer.png",
-    gallery: [
-      "/images/projects/ordersync/ordersync-customer.png",
-      "/images/projects/ordersync/ordersync-orders.png",
-      "/images/projects/ordersync/ordersync-manager.png",
-      "/images/projects/ordersync/ordersync-rider.png",
-    ],
-    summary: "Leon is a portfolio website designed for a small team.",
-    description:
-      "Leon is a visually appealing portfolio website designed for a small team of developers. The website serves as a showcase for the team's projects, skills, and expertise in web development. With a clean and modern design, the Leon portfolio website provides an engaging user experience that highlights the team's unique value proposition and capabilities. Visitors can easily navigate through the portfolio to explore the various projects completed by the team, learn about their technical skills, and get in touch for potential collaborations or job opportunities. Whether you're a potential client looking for web development services or a fellow developer interested in connecting with the team, the Leon portfolio website offers a compelling introduction to their work and expertise.",
-    technologies: ["HTML", "CSS"],
-    github: "https://github.com/AhmedNasser1010/Leon#readme",
-    view: "https://ahmednasser1010.github.io/Leon/",
   },
 ];

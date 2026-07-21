@@ -213,21 +213,23 @@ export default async function ProjectPage({ params }: Props) {
               </div>
 
               <div className="mb-6">
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <IoEarthSharp className="text-[#b5b5b5] text-3xl" />
-                    <h4 className="font-futura text-xl pl-2">{t("website")}</h4>
-                  </div>
+                {currentProject.view && (
+                  <div className="mb-6">
+                    <div className="flex items-center mb-2">
+                      <IoEarthSharp className="text-[#b5b5b5] text-3xl" />
+                      <h4 className="font-futura text-xl pl-2">{t("website")}</h4>
+                    </div>
 
-                  <a
-                    href={currentProject.view}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block font-mono text-sm font-bold"
-                  >
-                    {cleanLink(currentProject.view)}
-                  </a>
-                </div>
+                    <a
+                      href={currentProject.view}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block font-mono text-sm font-bold"
+                    >
+                      {cleanLink(currentProject.view)}
+                    </a>
+                  </div>
+                )}
                 <div>
                   <div className="flex items-center mb-2">
                     <FaGithub className="text-[#b5b5b5] text-3xl" />
