@@ -4,6 +4,7 @@ import {
   About,
   TechStack,
   Projects,
+  Faq,
   Contact,
 } from "@/components";
 // import WindowSize from "@/components/WindowSize";
@@ -26,6 +27,8 @@ const Home = async () => {
       <TechStack />
 
       <Projects />
+
+      <Faq />
 
       <Contact />
 

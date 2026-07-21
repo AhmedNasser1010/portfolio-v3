@@ -61,6 +61,27 @@
     "footer": {
       "tagline": "Clean, scalable and user-focused web experiences.",
       "copyright": "© 2026 Ahmed Nasser. All rights reserved."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "What technologies do you specialize in?",
+          "answer": "I specialize in Next.js, React, TypeScript, and modern web technologies. I also work with Firebase, Supabase, and various backend-as-a-service platforms."
+        },
+        {
+          "question": "Are you available for freelance work?",
+          "answer": "Yes, I'm available for freelance projects. Feel free to reach out through the contact form to discuss your project requirements."
+        },
+        {
+          "question": "Can I see your previous work?",
+          "answer": "Absolutely! Check out the projects section above to see examples of my recent work, including full-stack applications, landing pages, and interactive web experiences."
+        },
+        {
+          "question": "Do you work with international clients?",
+          "answer": "Yes, I work with clients worldwide. My portfolio is available in both English and Arabic to serve a diverse audience."
+        }
+      ]
     }
   },
   "ProjectPage": {

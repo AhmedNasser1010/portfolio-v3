@@ -85,10 +85,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
 
     alternates: {
-      canonical: `/${locale}`,
+      canonical: `${CONSTANTS.baseUrl}/${locale}`,
       languages: {
-        en: "/en",
-        ar: "/ar",
+        en: `${CONSTANTS.baseUrl}/en`,
+        ar: `${CONSTANTS.baseUrl}/ar`,
       },
     },
 
@@ -140,16 +140,16 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
-  const structuredData = {
+  const personStructuredData = {
     "@context": "https://schema.org/",
     "@type": "Person",
     name: t("name"),
-    url: `https://ahmednasser-portfolio.vercel.app/${locale}`,
-    image: "https://ahmednasser-portfolio.vercel.app/og-image.webp",
+    url: `${CONSTANTS.baseUrl}/${locale}`,
+    image: `${CONSTANTS.baseUrl}/og-image.webp`,
     sameAs: [
       "https://www.linkedin.com/in/ahmednasser2004/",
       "https://github.com/AhmedNasser1010",
-      `https://ahmednasser-portfolio.vercel.app/${locale}`,
+      `${CONSTANTS.baseUrl}/${locale}`,
     ],
     jobTitle: t("jobTitle"),
     description: t("description"),
@@ -178,17 +178,44 @@ export default async function LocaleLayout({
     inLanguage: locale,
   };
 
+  const websiteStructuredData = {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    name: t("name"),
+    url: `${CONSTANTS.baseUrl}/${locale}`,
+    inLanguage: locale,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${CONSTANTS.baseUrl}/${locale}/projects?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const faqT = await getTranslations("HomePage.faq");
+  const faqItems = faqT.raw("items") as Array<{ question: string; answer: string }>;
+  const faqStructuredData = {
+    "@context": "https://schema.org/",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  const isEn = locale === "en";
+
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={isEn ? "ltr" : "rtl"}>
       <body
         className={`
-          ${openSans.variable}
-          ${dmSerifDisplay.variable}
-          ${archivoBlack.variable}
-          ${dreamAvenue.variable}
-          ${palatinoArabic.variable}
-          ${myriadArabic.variable}
-          ${montserratArabic.variable}
+          ${isEn ? `${openSans.variable} ${dmSerifDisplay.variable} ${archivoBlack.variable} ${dreamAvenue.variable}` : `${palatinoArabic.variable} ${myriadArabic.variable} ${montserratArabic.variable} ${openSans.variable}`}
           ${futura.variable}
           antialiased
           `}
@@ -200,7 +227,7 @@ export default async function LocaleLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
+            __html: JSON.stringify([personStructuredData, websiteStructuredData, faqStructuredData]),
           }}
         />
       </body>

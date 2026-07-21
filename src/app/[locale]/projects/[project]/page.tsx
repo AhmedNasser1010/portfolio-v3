@@ -11,6 +11,7 @@ import { styleEnAr } from "@/lib/utils/styleEnAr";
 import { titleToKebab } from "@/lib/utils";
 import { CONSTANTS, PROJECTS } from "@/constants";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = await getLocale();
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const t = await getTranslations({
     locale,
-    namespace: "Projects",
+    namespace: "ProjectPage",
   });
 
   const currentProject = PROJECTS.find(
@@ -32,14 +33,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
+    metadataBase: new URL(CONSTANTS.baseUrl),
     title: currentProject.title,
     description: currentProject.description,
 
     alternates: {
-      canonical: `/${locale}/projects/${project}`,
+      canonical: `${CONSTANTS.baseUrl}/${locale}/projects/${project}`,
       languages: {
-        en: `/en/projects/${project}`,
-        ar: `/ar/projects/${project}`,
+        en: `${CONSTANTS.baseUrl}/en/projects/${project}`,
+        ar: `${CONSTANTS.baseUrl}/ar/projects/${project}`,
       },
     },
 
@@ -72,6 +74,12 @@ interface Props {
   params: Promise<{ project: string }>;
 }
 
+export async function generateStaticParams() {
+  return PROJECTS.map((project) => ({
+    project: project.title.toLowerCase().replace(/\s+/g, "-"),
+  }));
+}
+
 export default async function ProjectPage({ params }: Props) {
   const locale = await getLocale();
   setRequestLocale(locale);
@@ -85,6 +93,41 @@ export default async function ProjectPage({ params }: Props) {
   if (!currentProject) {
     notFound();
   }
+
+  const projectStructuredData = {
+    "@context": "https://schema.org/",
+    "@type": "CreativeWork",
+    name: currentProject.title,
+    description: currentProject.description,
+    url: `${CONSTANTS.baseUrl}/${locale}/projects/${project}`,
+    image: `${CONSTANTS.baseUrl}${currentProject.ogImage}`,
+    author: {
+      "@type": "Person",
+      name: "Ahmed Nasser",
+      url: `${CONSTANTS.baseUrl}/${locale}`,
+    },
+    technology: currentProject.technologies,
+    codeRepository: currentProject.github,
+  };
+
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${CONSTANTS.baseUrl}/${locale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: currentProject.title,
+        item: `${CONSTANTS.baseUrl}/${locale}/projects/${project}`,
+      },
+    ],
+  };
 
   return (
     <Suspense fallback={<Loading />}>
@@ -131,7 +174,7 @@ export default async function ProjectPage({ params }: Props) {
               loop
               muted
               playsInline
-              preload="auto"
+              preload="none"
               className="w-fit h-[300px] md:h-[400px] mb-6 object-cover pointer-events-none shadow-xl rounded-2xl"
             >
               <source src={currentProject.video} type="video/webm" />
@@ -212,10 +255,13 @@ export default async function ProjectPage({ params }: Props) {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
               {currentProject.gallery.map((image, index) => (
-                <img
+                <Image
                   key={index}
                   src={image}
                   alt={`${currentProject.title} screenshot ${index + 1}`}
+                  width={800}
+                  height={600}
+                  loading="lazy"
                   className="w-full h-auto rounded-lg object-cover shadow-md"
                 />
               ))}
@@ -223,6 +269,13 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         </main>
       </Container>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([projectStructuredData, breadcrumbStructuredData]),
+        }}
+      />
     </Suspense>
   );
 }

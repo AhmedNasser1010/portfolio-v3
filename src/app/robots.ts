@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { CONSTANTS } from "@/constants";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://ahmednasser-portfolio.vercel.app/sitemap.xml",
+    sitemap: `${CONSTANTS.baseUrl}/sitemap.xml`,
   };
 }
