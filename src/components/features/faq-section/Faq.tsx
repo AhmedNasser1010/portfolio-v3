@@ -11,11 +11,11 @@ const Faq = async () => {
     <section className="w-full bg-white" id="faq">
       <Container className="py-28">
         <h2
-          className={`${styleEnAr(locale, "font-dmSerif", "font-montserrat")} text-3xl font-bold mb-8`}
+          className={`${styleEnAr(locale, "font-dmSerif", "font-montserrat")} text-3xl font-bold mb-8 text-center`}
         >
           {t("title")}
         </h2>
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mx-auto">
           {items.map((item, index) => (
             <details
               key={index}

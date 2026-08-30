@@ -5,3 +5,4 @@ export { default as ListItem } from "./ListItem";
 export { default as Title } from "./Title";
 export { default as InfiniteCarousel } from "./InfiniteCarousel";
 export { default as Badge } from "./Badge";
+export { default as Gallery } from "./Gallery";

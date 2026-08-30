@@ -1,4 +1,4 @@
-import { Container } from "@/components/ui";
+import { Container, Gallery } from "@/components/ui";
 import { cleanLink } from "@/lib/utils/cleanLink";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
@@ -11,7 +11,6 @@ import { styleEnAr } from "@/lib/utils/styleEnAr";
 import { titleToKebab } from "@/lib/utils";
 import { CONSTANTS, PROJECTS } from "@/constants";
 import { Metadata } from "next";
-import Image from "next/image";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = await getLocale();
@@ -262,18 +261,14 @@ export default async function ProjectPage({ params }: Props) {
             >
               {t("gallery")}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-              {currentProject.gallery.map((image, index) => (
-                <Image
-                  key={index}
-                  src={image}
-                  alt={`${currentProject.title} screenshot ${index + 1}`}
-                  width={800}
-                  height={600}
-                  loading="lazy"
-                  className="w-full h-auto rounded-lg object-cover shadow-md"
-                />
-              ))}
+            <div>
+              <Gallery
+                images={currentProject.gallery.map((image, index) => ({
+                  src: image,
+                  alt: `${currentProject.title} screenshot ${index + 1}`,
+                }))}
+                title={currentProject.title}
+              />
             </div>
           </div>
         </main>
