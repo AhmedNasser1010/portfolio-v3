@@ -5,20 +5,17 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { titleToKebab } from "@/lib/utils";
 import { ProjectType } from "@/constants/projects";
 
-const heights = [310, 400, 454];
-
 const Project = async ({
   project,
-  index,
+  height,
 }: {
   project: ProjectType;
-  index: number;
+  height: number;
 }) => {
   const locale = await getLocale();
   const t = await getTranslations("Projects");
   const slug = titleToKebab(project.title);
   const summary = t.raw(`${slug}.summary`) as string;
-  const height = heights[index % heights.length];
 
   return (
     <div

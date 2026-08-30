@@ -1,14 +1,18 @@
 import { Link } from "@/i18n/navigation";
 import Project from "./Project";
+import ProjectsGrid from "./ProjectsGrid";
 import { Container } from "@/components/ui";
 import { titleToKebab } from "@/lib/utils";
 import { PROJECTS } from "@/constants";
 import { getLocale, getTranslations } from "next-intl/server";
 import { styleEnAr } from "@/lib/utils/styleEnAr";
 
+const heights = [310, 400, 454];
+
 const Projects = async () => {
   const locale = await getLocale();
   const t = await getTranslations("HomePage.projects");
+  const cardHeights = PROJECTS.map((_, index) => heights[index % heights.length]);
   return (
     <section className="w-full bg-[#202020]" id="projects">
       <Container className="text-white py-28">
@@ -17,17 +21,17 @@ const Projects = async () => {
         >
           {t("title")}
         </h2>
-        <div className="columns-1 gap-9 lg:columns-2">
+        <ProjectsGrid heights={cardHeights}>
           {PROJECTS.map((project, index) => (
             <Link
               key={index}
-              className="mb-9 inline-block w-full break-inside-avoid"
+              className="block w-full"
               href={`/projects/${titleToKebab(project.title)}`}
             >
-              <Project project={project} index={index} />
+              <Project project={project} height={cardHeights[index]} />
             </Link>
           ))}
-        </div>
+        </ProjectsGrid>
       </Container>
     </section>
   );
