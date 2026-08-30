@@ -3,11 +3,20 @@ import Project from "./Project";
 import { Container } from "@/components/ui";
 import { titleToKebab } from "@/lib/utils";
 import { PROJECTS } from "@/constants";
+import { getLocale, getTranslations } from "next-intl/server";
+import { styleEnAr } from "@/lib/utils/styleEnAr";
 
-const Projects = () => {
+const Projects = async () => {
+  const locale = await getLocale();
+  const t = await getTranslations("HomePage.projects");
   return (
     <section className="w-full bg-[#202020]" id="projects">
       <Container className="text-white py-28">
+        <h2
+          className={`${styleEnAr(locale, "font-dmSerif", "font-montserrat")} text-3xl font-bold mb-8 text-center`}
+        >
+          {t("title")}
+        </h2>
         <div className="columns-1 gap-9 lg:columns-2">
           {PROJECTS.map((project, index) => (
             <Link

@@ -30,6 +30,9 @@
       "frontend": "FRONTEND",
       "cloudBackend": "CLOUD & BACKEND SERVICES"
     },
+    "projects": {
+      "title": "Selected Works"
+    },
     "contact": {
       "title": "Let’s Talk",
       "subtitle": "I’d like to hear from you!",
