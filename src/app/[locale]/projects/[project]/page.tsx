@@ -184,7 +184,7 @@ export default async function ProjectPage({ params }: Props) {
               preload="none"
               className="w-fit h-[300px] md:h-[400px] mb-6 object-cover pointer-events-none shadow-xl rounded-2xl"
             >
-              <source src={currentProject.video} type="video/webm" />
+              <source src={currentProject.video} type="video/mp4" />
             </video>
           </div>
 

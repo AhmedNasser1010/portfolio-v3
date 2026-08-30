@@ -34,7 +34,7 @@ const Project = async ({
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover pointer-events-none"
       >
-        <source src={project.video} type="video/webm" />
+        <source src={project.video} type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-black/15" />
