@@ -5,11 +5,13 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
 
+type GalleryImage = { src: string; alt: string };
+
 const Gallery = ({
   images,
   title,
 }: {
-  images: { src: string; alt: string }[];
+  images: GalleryImage[];
   title: string;
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -45,12 +47,12 @@ const Gallery = ({
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-2 [column-fill:balance]">
         {images.map((image, index) => (
           <button
             key={image.src}
             onClick={() => setActiveIndex(index)}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b5b5b5]"
+            className="group relative mb-2 block w-full break-inside-avoid cursor-pointer overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b5b5b5]"
             aria-label={`${title} screenshot ${index + 1} - ${activeIndex === index ? "open" : ""}`}
           >
             <Image
